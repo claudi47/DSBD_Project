@@ -160,5 +160,6 @@ crashlytics-build.properties
 fabric.properties
 
 *.exe
+*.csv
 
 scratches/
