@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+
+  mongo:
+    image: mongo
+    volumes:
+      - database:/data/db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: claudi47
+      MONGO_INITDB_ROOT_PASSWORD: ciaoatutti
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: claudi47
+      ME_CONFIG_MONGODB_ADMINPASSWORD: ciaoatutti
+      ME_CONFIG_MONGODB_URL: mongodb://claudi47:ciaoatutti@mongo:27017/
+
+  server:
+    depends_on:
+      - mongo
+    build:
+      context: ./DSBD_Server
+
+  bot:
+    depends_on:
+      - server
+    build:
+      context: ./DSBD_Bot
+
+  stats_settings:
+    depends_on:
+      - mongo
+    build:
+      context: ./DSBD_Stats_Settings
+
+volumes:
+  database:
