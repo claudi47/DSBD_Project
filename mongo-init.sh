@@ -6,7 +6,7 @@ mongo -- "$MONGO_INITDB_DATABASE" <<EOF
             roles: [
                 {
                     role: "dbOwner",
-                    db: "db_dsbd"
+                    db: "$MONGO_INITDB_DATABASE"
                 }
             ]
         }
