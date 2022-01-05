@@ -24,6 +24,7 @@ services:
       - ME_CONFIG_MONGODB_URL
 
   server:
+    image: localhost:5000/dsbd_server
     environment:
       - DB_USERNAME
       - DB_PASSWORD
@@ -36,6 +37,7 @@ services:
       context: ./DSBD_Server
 
   bot:
+    image: localhost:5000/dsbd_bot
     environment:
       - BOT_TOKEN_DSBD
     depends_on:
@@ -46,6 +48,7 @@ services:
       - tmpfiles:/tmpfiles
 
   stats_settings:
+    image: localhost:5000/dsbd_stats_settings
     environment:
       - DB_USERNAME
       - DB_PASSWORD
