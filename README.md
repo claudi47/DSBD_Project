@@ -1,4 +1,4 @@
-# DSDB_DiscordBot
+# DSDB_Project
 This is the "Superproject" repository containing all the submodules for the DSBD University Project.
 
 ## Submodules
