@@ -24,7 +24,7 @@ services:
       - ME_CONFIG_MONGODB_URL
 
   server:
-    image: localhost:5000/dsbd_server
+    image: lauralex/dsbd_server
     environment:
       - DB_USERNAME
       - DB_PASSWORD
@@ -37,7 +37,7 @@ services:
       context: ./DSBD_Server
 
   bot:
-    image: localhost:5000/dsbd_bot
+    image: lauralex/dsbd_bot
     environment:
       - BOT_TOKEN_DSBD
     depends_on:
@@ -48,7 +48,7 @@ services:
       - tmpfiles:/tmpfiles
 
   stats_settings:
-    image: localhost:5000/dsbd_stats_settings
+    image: lauralex/dsbd_stats_settings
     environment:
       - DB_USERNAME
       - DB_PASSWORD
@@ -62,6 +62,29 @@ services:
     volumes:
       - tmpfiles:/tmpfiles
 
+  zookeeper:
+    image: 'bitnami/zookeeper:latest'
+    ports:
+      - '2181:2181'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+
+  kafka:
+    image: 'bitnami/kafka:latest'
+    ports:
+      - '9092:9092'
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092
+      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+    volumes:
+      - kafkavol:/bitnami/kafka
+
 volumes:
   database:
   tmpfiles:
+  kafkavol:
