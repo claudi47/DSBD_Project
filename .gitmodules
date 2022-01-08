@@ -7,3 +7,9 @@
 [submodule "DSBD_Stats_Settings"]
 	path = DSBD_Stats_Settings
 	url = https://github.com/claudi47/DSBD_Stats_Settings
+[submodule "BetDataService"]
+	path = BetDataService
+	url = https://github.com/claudi47/BetDataService
+[submodule "DSBD_BetDataService"]
+	path = DSBD_BetDataService
+	url = https://github.com/claudi47/DSBD_BetDataService
