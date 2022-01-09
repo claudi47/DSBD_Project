@@ -12,4 +12,8 @@ This is the "Superproject" repository containing all the submodules for the DSBD
 - [x] Asynchronous CSV parser, BOT Admin Configuration and User Stats (PAS) module
 - [x] Transaction and Rollback System (with Fail-safe features)
 - [x] Docker migration (with Docker Compose orchestration)
+- [x] Draft async message stream processing with Kafka
+- [ ] Complete HTTP -> Async Stream migration
+  - [ ] User/Betdata request/response stream
+  - [ ] CSV request/response stream
 - [ ] Kubernetes migration
