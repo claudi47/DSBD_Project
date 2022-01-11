@@ -25,9 +25,12 @@ services:
 
   mongo_parser:
       image: mongo
+      ports:
+        - '27017:27017'
       volumes:
         - database_parser:/data/db
-        - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
+        - ./mammamia.js:/mamma/orco.js:ro
+        #- ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh:ro
       restart: always
       environment:
         - MONGO_INITDB_ROOT_USERNAME
