@@ -1,15 +1,15 @@
-[submodule "DSBD_Server"]
-	path = DSBD_Server
-	url = https://github.com/claudi47/DSBD_Server
 [submodule "DSBD_Bot"]
 	path = DSBD_Bot
 	url = https://github.com/claudi47/DSBD_Bot
-[submodule "DSBD_Stats_Settings"]
-	path = DSBD_Stats_Settings
-	url = https://github.com/claudi47/DSBD_Stats_Settings
 [submodule "BetDataService"]
 	path = BetDataService
 	url = https://github.com/claudi47/BetDataService
 [submodule "DSBD_BetDataService"]
 	path = DSBD_BetDataService
 	url = https://github.com/claudi47/DSBD_BetDataService
+[submodule "DSBD_csv_gen"]
+	path = DSBD_csv_gen
+	url = https://github.com/lauralex/DSBD_csv_gen
+[submodule "DSBD_UserService"]
+	path = DSBD_UserService
+	url = https://github.com/lauralex/DSBD_UserService
