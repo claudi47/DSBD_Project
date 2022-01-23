@@ -2,9 +2,11 @@
 This is the "Superproject" repository containing all the submodules for the DSBD University Project.
 
 ## Submodules
-- [Server module](https://github.com/claudi47/DSBD_Server) (Central API Gateway, for request validation and forwarding)
-- [Discord Bot module](https://github.com/claudi47/DSBD_Bot) (Discord Bot Client handling the user interaction logic)
-- [Bot Stats & Settings module](https://github.com/claudi47/DSBD_Stats_Settings) (PAS module handling CSV parsing, BOT Admin Configuration and User Stats)
+- [Bet data service module](https://github.com/claudi47/DSBD_BetDataService/tree/test)
+- [CSV generation module](https://github.com/lauralex/DSBD_csv_gen/tree/test)
+- [User service module](https://github.com/lauralex/DSBD_UserService)
+- [Discord Bot module](https://github.com/claudi47/DSBD_Bot/tree/test) (Discord Bot Client handling the user interaction logic)
+
 
 ## Roadmap
 - [x] Discord bot client logic
