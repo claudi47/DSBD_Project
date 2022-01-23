@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bet-data-service
+  labels:
+    app: bet-data-service
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: bet-data-service
+      labels:
+        app: bet-data-service
+    spec:
+      containers:
+        - name: bet-data-service
+          image: lauralex/dsbd_betdata_service
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: bet-data-service

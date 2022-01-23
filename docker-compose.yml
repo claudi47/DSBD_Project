@@ -53,33 +53,21 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD
       - ME_CONFIG_MONGODB_URL=${ME_CONFIG_MONGODB_URL_USER}
 
-  server:
-    image: lauralex/dsbd_server
-    environment:
-      - DB_USERNAME
-      - DB_PASSWORD
-      - DB_URL
-      - DB_PORT
-      - DB_DATABASE
-    depends_on:
-      - mongo_betData
-      - bet_data_service
-      - mongo_user
-      - stats_settings
-    build:
-      context: ./DSBD_Server
-
   csv-gen:
+    image: lauralex/dsbd_csv_gen
     depends_on:
       - broker
+      - schema-registry
     build:
       context: ./DSBD_csv_gen
 
   user-service:
+    image: lauralex/dsbd_user_service
     build:
       context: ./DSBD_UserService
     depends_on:
       - broker
+      - schema-registry
       - mongo_user
     environment:
       - DB_USERNAME
@@ -89,33 +77,19 @@ services:
       - DB_DATABASE
 
   bot:
-    #image: lauralex/dsbd_bot
+    image: lauralex/dsbd_bot
     environment:
       - BOT_TOKEN_DSBD
     depends_on:
       - broker
+      - schema-registry
     build:
       context: ./DSBD_Bot
     volumes:
       - tmpfiles:/tmpfiles
 
-  stats_settings:
-    image: lauralex/dsbd_stats_settings
-    environment:
-      - DB_USERNAME
-      - DB_PASSWORD
-      - DB_URL
-      - DB_PORT
-      - DB_DATABASE
-    depends_on:
-      - mongo_user
-      - kafka
-    build:
-      context: ./DSBD_Stats_Settings
-    volumes:
-      - tmpfiles:/tmpfiles
-
   bet_data_service:
+    image: lauralex/dsbd_betdata_service
     environment:
       - DB_USERNAME
       - DB_PASSWORD
@@ -126,6 +100,7 @@ services:
       context: ./DSBD_BetDataService
     depends_on:
       - broker
+      - schema-registry
       - mongo_betData
 
   zookeeper:
