@@ -8,12 +8,15 @@ This is the "Superproject" repository containing all the submodules for the DSBD
 
 ## Roadmap
 - [x] Discord bot client logic
-- [x] Central API Gateway configuration and logic
-- [x] Asynchronous CSV parser, BOT Admin Configuration and User Stats (PAS) module
 - [x] Transaction and Rollback System (with Fail-safe features)
 - [x] Docker migration (with Docker Compose orchestration)
-- [x] Draft async message stream processing with Kafka
-- [ ] Complete HTTP -> Async Stream migration
-  - [ ] User/Betdata request/response stream
-  - [ ] CSV request/response stream
+- [x] Complete HTTP -> Async Stream migration
+  - [x] User/Betdata request/response stream
+  - [x] CSV request/response stream
 - [ ] Kubernetes migration
+  - [x] Confluent Platform operator
+  - [x] MongoDB operator
+  - [ ] DSBD modules
+- [ ] HTTP stats requests and processing
+- [ ] Stats export from Kafka and HTTP endpoints to Prometheus
+- [ ] Performance predictions (time-series data forecasting, probably using Prophet by FB)
