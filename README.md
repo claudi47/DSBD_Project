@@ -18,7 +18,7 @@ This is the "Superproject" repository containing all the submodules for the DSBD
 - [ ] Kubernetes migration
   - [x] Confluent Platform operator
   - [x] MongoDB operator
-  - [ ] DSBD modules
+  - [x] DSBD modules
 - [ ] HTTP stats requests and processing
 - [ ] Stats export from Kafka and HTTP endpoints to Prometheus
 - [ ] Performance predictions (time-series data forecasting, probably using Prophet by FB)
