@@ -1,33 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bet-data-service
+  name: csv-gen
   labels:
-    app: bet-data-service
+    app: csv-gen
   namespace: dsbd
 spec:
   replicas: 2
   template:
     metadata:
-      name: bet-data-service
+      name: csv-gen
       labels:
-        app: bet-data-service
+        app: csv-gen
     spec:
       containers:
-        - name: bet-data-service
-          image: lauralex/dsbd_betdata_service
+        - name: csv-gen
+          image: lauralex/dsbd_csv_gen
           imagePullPolicy: IfNotPresent
           env:
-            - name: DB_HOST
-              valueFrom:
-                secretKeyRef:
-                  name: mongo-user-admin-claudi47
-                  key: connectionString.standardSrv
-            - name: DB_DATABASE
-              valueFrom:
-                configMapKeyRef:
-                  key: database
-                  name: dsbd-config
             - name: BROKER
               valueFrom:
                 configMapKeyRef:
@@ -41,4 +31,4 @@ spec:
       restartPolicy: Always
   selector:
     matchLabels:
-      app: bet-data-service
+      app: csv-gen

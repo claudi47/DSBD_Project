@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: discord
+  namespace: dsbd
+stringData:
+  token: OTI2NTE0NjM4OTI4MDg1MTEz.Yc8x_w.f0o_T0gF5nmyxBOmmdDHbvJp2oU

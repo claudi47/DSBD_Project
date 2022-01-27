@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bet-data-service
+  name: user-service
   labels:
-    app: bet-data-service
+    app: user-service
   namespace: dsbd
 spec:
   replicas: 2
   template:
     metadata:
-      name: bet-data-service
+      name: user-service
       labels:
-        app: bet-data-service
+        app: user-service
     spec:
       containers:
-        - name: bet-data-service
-          image: lauralex/dsbd_betdata_service
+        - name: user-service
+          image: lauralex/dsbd_user_service
           imagePullPolicy: IfNotPresent
           env:
             - name: DB_HOST
               valueFrom:
                 secretKeyRef:
-                  name: mongo-user-admin-claudi47
                   key: connectionString.standardSrv
+                  name: mongo-user-admin-claudi47
             - name: DB_DATABASE
               valueFrom:
                 configMapKeyRef:
@@ -41,4 +41,4 @@ spec:
       restartPolicy: Always
   selector:
     matchLabels:
-      app: bet-data-service
+      app: user-service

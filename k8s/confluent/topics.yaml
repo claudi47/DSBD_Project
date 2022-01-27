@@ -1,0 +1,56 @@
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: user-auth
+  namespace: confluent
+spec:
+  partitionCount: 2
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: user-auth-reply
+  namespace: confluent
+spec:
+  partitionCount: 2
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: csv-gen
+  namespace: confluent
+spec:
+  partitionCount: 2
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: csv-gen-reply
+  namespace: confluent
+spec:
+  partitionCount: 2
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: bet-data-finish
+  namespace: confluent
+spec:
+  partitionCount: 2
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: search-entry
+  namespace: confluent
+spec:
+  partitionCount: 2
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: KafkaTopic
+metadata:
+  name: bet-data-apply
+  namespace: confluent
+spec:
+  partitionCount: 2
