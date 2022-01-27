@@ -4,6 +4,7 @@ metadata:
   name: mongo-express-betdata
   labels:
     app: mongo-express-betdata
+  namespace: dsbd
 spec:
   replicas: 1
   template:

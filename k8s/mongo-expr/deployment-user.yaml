@@ -4,6 +4,7 @@ metadata:
   name: mongo-express-user
   labels:
     app: mongo-express-user
+  namespace: dsbd
 spec:
   replicas: 1
   template:
