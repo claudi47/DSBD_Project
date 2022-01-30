@@ -4,14 +4,15 @@ metadata:
   name: mongo-betdata
   namespace: dsbd
 spec:
-  members: 2
+  members: 1
+  # arbiters: 1
   type: ReplicaSet
-  version: "4.2.6"
+  version: "5.0.5"
   security:
     authentication:
       modes: [ "SCRAM" ]
   users:
-    - name: ADMIN
+    - name: claudi47
       db: admin
       passwordSecretRef: # a reference to the secret that will be used to generate the user's password
         name: my-user-password

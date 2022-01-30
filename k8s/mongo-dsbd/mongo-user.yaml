@@ -4,9 +4,10 @@ metadata:
   name: mongo-user
   namespace: dsbd
 spec:
-  members: 2
+  members: 1
+  # arbiters: 1
   type: ReplicaSet
-  version: "4.2.6"
+  version: "5.0.5"
   security:
     authentication:
       modes: [ "SCRAM" ]

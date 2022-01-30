@@ -6,7 +6,7 @@ metadata:
     app: user-service
   namespace: dsbd
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       name: user-service
@@ -16,7 +16,7 @@ spec:
       containers:
         - name: user-service
           image: lauralex/dsbd_user_service
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             - name: DB_HOST
               valueFrom:
@@ -42,3 +42,31 @@ spec:
   selector:
     matchLabels:
       app: user-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+  namespace: dsbd
+spec:
+  selector:
+    app: user-service
+  ports:
+    - port: 80
+      name: web
+      targetPort: 8500
+  type: ClusterIP
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: user-service
+  namespace: dsbd
+  labels:
+    release: my-kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app: user-service
+  endpoints:
+    - port: web

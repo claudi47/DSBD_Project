@@ -1,0 +1,72 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  annotations:
+    meta.helm.sh/release-name: my-kube-prometheus-stack
+    meta.helm.sh/release-namespace: monitoring
+  creationTimestamp: "2022-01-29T16:09:45Z"
+  generation: 1
+  labels:
+    app: kube-prometheus-stack-prometheus
+    app.kubernetes.io/instance: my-kube-prometheus-stack
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/part-of: kube-prometheus-stack
+    app.kubernetes.io/version: 30.2.0
+    chart: kube-prometheus-stack-30.2.0
+    heritage: Helm
+    release: my-kube-prometheus-stack
+  name: my-kube-prometheus-stack-prometheus
+  namespace: monitoring
+  resourceVersion: "858699"
+  uid: b3d87bda-2500-4c92-96d2-3be21dfbada9
+spec:
+  alerting:
+    alertmanagers:
+    - apiVersion: v2
+      name: my-kube-prometheus-stack-alertmanager
+      namespace: monitoring
+      pathPrefix: /
+      port: http-web
+  enableAdminAPI: false
+  externalUrl: http://my-kube-prometheus-stack-prometheus.monitoring:9090
+  image: quay.io/prometheus/prometheus:v2.32.1
+  listenLocal: false
+  logFormat: logfmt
+  logLevel: info
+  paused: false
+  podMonitorNamespaceSelector: {}
+  podMonitorSelector:
+    matchLabels:
+      release: my-kube-prometheus-stack
+  portName: http-web
+  probeNamespaceSelector: {}
+  probeSelector:
+    matchLabels:
+      release: my-kube-prometheus-stack
+  replicas: 1
+  retention: 10d
+  routePrefix: /
+  ruleNamespaceSelector: {}
+  ruleSelector:
+    matchLabels:
+      release: my-kube-prometheus-stack
+  securityContext:
+    fsGroup: 2000
+    runAsGroup: 2000
+    runAsNonRoot: true
+    runAsUser: 1000
+  serviceAccountName: my-kube-prometheus-stack-prometheus
+  serviceMonitorNamespaceSelector:
+    matchExpressions:
+      - key: kubernetes.io/metadata.name
+        operator: In
+        values:
+          - dsbd
+          - confluent
+    matchLabels:
+      kubernetes.io/metadata.name: monitoring
+  serviceMonitorSelector:
+    matchLabels:
+      release: my-kube-prometheus-stack
+  shards: 1
+  version: v2.32.1

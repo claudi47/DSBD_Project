@@ -16,7 +16,7 @@ spec:
       containers:
         - name: bot
           image: lauralex/dsbd_bot
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             - name: DB_HOST
               valueFrom:
@@ -43,6 +43,10 @@ spec:
                 secretKeyRef:
                   key: token
                   name: discord
+            - name: USER_SERVICE_URL
+              value: user-service
+            - name: BETDATA_SERVICE_URL
+              value: bet-data-service
 
       restartPolicy: Always
   selector:

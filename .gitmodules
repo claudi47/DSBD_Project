@@ -1,15 +1,21 @@
 [submodule "DSBD_Bot"]
 	path = DSBD_Bot
 	url = https://github.com/claudi47/DSBD_Bot
-[submodule "BetDataService"]
-	path = BetDataService
-	url = https://github.com/claudi47/BetDataService
+	branch = test
 [submodule "DSBD_BetDataService"]
 	path = DSBD_BetDataService
 	url = https://github.com/claudi47/DSBD_BetDataService
+	branch = test
 [submodule "DSBD_csv_gen"]
 	path = DSBD_csv_gen
 	url = https://github.com/lauralex/DSBD_csv_gen
+	branch = test
 [submodule "DSBD_UserService"]
 	path = DSBD_UserService
 	url = https://github.com/lauralex/DSBD_UserService
+	branch = test
+[submodule "DSBD_Predictor"]
+	path = DSBD_Predictor
+	url = https://github.com/lauralex/DSBD_Predictor
+	branch = test
+

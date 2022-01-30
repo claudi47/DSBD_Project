@@ -65,6 +65,8 @@ services:
       - SCHEMA_REGISTRY
 
   user-service:
+    ports:
+      - "9090:8500"
     image: lauralex/dsbd_user_service
     build:
       context: ./DSBD_UserService
@@ -84,6 +86,8 @@ services:
       - BOT_TOKEN_DSBD
       - BROKER
       - SCHEMA_REGISTRY
+      - BETDATA_SERVICE_URL
+      - USER_SERVICE_URL
     depends_on:
       - broker
       - schema-registry
@@ -108,8 +112,7 @@ services:
     image: confluentinc/cp-zookeeper:7.0.1
     hostname: zookeeper
     container_name: zookeeper
-    ports:
-      - "2181:2181"
+
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000

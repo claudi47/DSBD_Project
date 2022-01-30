@@ -6,7 +6,7 @@ metadata:
     app: csv-gen
   namespace: dsbd
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       name: csv-gen
@@ -16,7 +16,7 @@ spec:
       containers:
         - name: csv-gen
           image: lauralex/dsbd_csv_gen
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             - name: BROKER
               valueFrom:

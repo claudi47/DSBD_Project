@@ -1,0 +1,9 @@
+prometheus:
+  prometheusSpec:
+    serviceMonitorNamespaceSelector:
+      matchExpressions:
+        - key: kubernetes.io/metadata.name
+          operator: In
+          values:
+            - dsbd
+            - confluent
