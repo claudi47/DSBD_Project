@@ -6,7 +6,7 @@ This is the "Superproject" repository containing all the submodules for the DSBD
 - [CSV generation module](https://github.com/lauralex/DSBD_csv_gen/tree/test)
 - [User service module](https://github.com/lauralex/DSBD_UserService)
 - [Discord Bot module](https://github.com/claudi47/DSBD_Bot/tree/test) (Discord Bot Client handling the user interaction logic)
-
+- [Time series prediction module](https://github.com/lauralex/DSBD_Predictor/tree/test)
 
 ## Roadmap
 - [x] Discord bot client logic
@@ -15,10 +15,13 @@ This is the "Superproject" repository containing all the submodules for the DSBD
 - [x] Complete HTTP -> Async Stream migration
   - [x] User/Betdata request/response stream
   - [x] CSV request/response stream
-- [ ] Kubernetes migration
+- [x] Kubernetes migration
   - [x] Confluent Platform operator
   - [x] MongoDB operator
   - [x] DSBD modules
-- [ ] HTTP stats requests and processing
-- [ ] Stats export from Kafka and HTTP endpoints to Prometheus
+- [x] HTTP stats requests and processing
+- [x] Stats export from Kafka and HTTP endpoints to Prometheus
 - [ ] Performance predictions (time-series data forecasting, probably using Prophet by FB)
+  - [x] First analysis and draft implementation
+  - [ ] Tested implementation
+  - [ ] Release
