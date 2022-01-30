@@ -1,5 +1,6 @@
 @echo off
 kubectl apply -k .\config
+call .\prometheus\start_prometheus.bat
 call .\confluent\confluentop.bat
 call .\mongop\install_mongo.bat
 kubectl apply -k .\mongo-dsbd
