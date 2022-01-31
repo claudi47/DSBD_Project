@@ -7,3 +7,11 @@ prometheus:
           values:
             - dsbd
             - confluent
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: hostpath
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 10Gi
