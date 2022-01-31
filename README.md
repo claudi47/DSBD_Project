@@ -2,18 +2,27 @@
 This is the "Superproject" repository containing all the submodules for the DSBD University Project.
 
 ## Submodules
-- [Server module](https://github.com/claudi47/DSBD_Server) (Central API Gateway, for request validation and forwarding)
-- [Discord Bot module](https://github.com/claudi47/DSBD_Bot) (Discord Bot Client handling the user interaction logic)
-- [Bot Stats & Settings module](https://github.com/claudi47/DSBD_Stats_Settings) (PAS module handling CSV parsing, BOT Admin Configuration and User Stats)
+- [Bet data service module](https://github.com/claudi47/DSBD_BetDataService/tree/test)
+- [CSV generation module](https://github.com/lauralex/DSBD_csv_gen/tree/test)
+- [User service module](https://github.com/lauralex/DSBD_UserService)
+- [Discord Bot module](https://github.com/claudi47/DSBD_Bot/tree/test) (Discord Bot Client handling the user interaction logic)
+- [Time series prediction module](https://github.com/lauralex/DSBD_Predictor/tree/test)
 
 ## Roadmap
 - [x] Discord bot client logic
-- [x] Central API Gateway configuration and logic
-- [x] Asynchronous CSV parser, BOT Admin Configuration and User Stats (PAS) module
 - [x] Transaction and Rollback System (with Fail-safe features)
 - [x] Docker migration (with Docker Compose orchestration)
-- [x] Draft async message stream processing with Kafka
-- [ ] Complete HTTP -> Async Stream migration
-  - [ ] User/Betdata request/response stream
-  - [ ] CSV request/response stream
-- [ ] Kubernetes migration
+- [x] Complete HTTP -> Async Stream migration
+  - [x] User/Betdata request/response stream
+  - [x] CSV request/response stream
+- [x] Kubernetes migration
+  - [x] Confluent Platform operator
+  - [x] MongoDB operator
+  - [x] DSBD modules
+- [x] HTTP stats requests and processing
+- [x] Stats export from Kafka and HTTP endpoints to Prometheus
+- [x] Performance predictions (time-series data forecasting, probably using Prophet by FB)
+  - [x] First analysis and draft implementation
+  - [x] Tested implementation
+  - [x] Release
+- [ ] Final adjustments

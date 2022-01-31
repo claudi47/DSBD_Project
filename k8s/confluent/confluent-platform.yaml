@@ -1,0 +1,75 @@
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: Zookeeper
+metadata:
+  name: zookeeper
+  namespace: confluent
+spec:
+  replicas: 1
+  image:
+    application: confluentinc/cp-zookeeper:7.0.1
+    init: confluentinc/confluent-init-container:2.2.0-1
+  dataVolumeCapacity: 10Gi
+  logVolumeCapacity: 10Gi
+#  storageClass:
+#    name: confluent
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: Kafka
+metadata:
+  name: kafka
+  namespace: confluent
+spec:
+  replicas: 1
+  image:
+    application: confluentinc/cp-server:7.0.1
+    init: confluentinc/confluent-init-container:2.2.0-1
+  dataVolumeCapacity: 10Gi
+#  storageClass:
+#    name: confluent
+  metricReporter:
+    enabled: true
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: ControlCenter
+metadata:
+  name: controlcenter
+  namespace: confluent
+spec:
+  internalTopicReplicatorFactor: 1
+  replicas: 1
+  image:
+    application: confluentinc/cp-enterprise-control-center:7.0.1
+    init: confluentinc/confluent-init-container:2.2.0-1
+  dataVolumeCapacity: 10Gi
+#  storageClass:
+#    name: confluent
+  dependencies:
+    schemaRegistry:
+      url: http://schemaregistry.confluent.svc.cluster.local:8081
+---
+apiVersion: platform.confluent.io/v1beta1
+kind: SchemaRegistry
+metadata:
+  name: schemaregistry
+  namespace: confluent
+spec:
+  internalTopicReplicatorFactor: 1
+  replicas: 1
+  image:
+    application: confluentinc/cp-schema-registry:7.0.1
+    init: confluentinc/confluent-init-container:2.2.0-1
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kafka
+  namespace: confluent
+  labels:
+    release: my-kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      cr-name: kafka
+  endpoints:
+    - port: prometheus

@@ -1,0 +1,5 @@
+# Create a user.yaml file in this directory replacing "YOUR_VALUE" with the correct MongoDB username
+
+- op: replace
+  path: /spec/users/0/name
+  value: YOUR_VALUE

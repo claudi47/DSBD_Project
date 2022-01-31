@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-client
+  namespace: dsbd
+  labels:
+    app: db-client
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: db-client
+      labels:
+        app: db-client
+    spec:
+      containers:
+        - name: db-client
+          image: mongo
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: db-client

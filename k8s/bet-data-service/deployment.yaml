@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bet-data-service
+  labels:
+    app: bet-data-service
+  namespace: dsbd
+spec:
+  replicas: 2
+  template:
+    metadata:
+      name: bet-data-service
+      labels:
+        app: bet-data-service
+    spec:
+      containers:
+        - name: bet-data-service
+          image: lauralex/dsbd_betdata_service
+          imagePullPolicy: Always
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: mongo-betdata-admin-claudi47
+                  key: connectionString.standardSrv
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  key: database
+                  name: dsbd-config
+            - name: BROKER
+              valueFrom:
+                configMapKeyRef:
+                  key: broker
+                  name: dsbd-config
+            - name: SCHEMA_REGISTRY
+              valueFrom:
+                configMapKeyRef:
+                  key: schemaRegistry
+                  name: dsbd-config
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: bet-data-service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bet-data-service
+  namespace: dsbd
+  labels:
+    app: bet-data-service
+spec:
+  selector:
+    app: bet-data-service
+  ports:
+    - port: 80
+      name: web
+      targetPort: 8500
+  type: NodePort
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: bet-data-service
+  namespace: dsbd
+  labels:
+    release: my-kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app: bet-data-service
+  endpoints:
+    - port: web
+

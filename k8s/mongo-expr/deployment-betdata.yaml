@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-express-betdata
+  labels:
+    app: mongo-express-betdata
+  namespace: dsbd
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: mongo-express-betdata
+      labels:
+        app: mongo-express-betdata
+    spec:
+      containers:
+        - name: mongo-express
+          image: mongo-express
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: username
+                  name: mongo-betdata-admin-claudi47
+            - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: password
+                  name: mongo-betdata-admin-claudi47
+            - name: DB_URL_PREFIX
+              valueFrom:
+                secretKeyRef:
+                  key: connectionString.standard
+                  name: mongo-betdata-admin-claudi47
+            - name: ME_CONFIG_MONGODB_URL
+              value: $(DB_URL_PREFIX)&replicaSet=mongo-betdata
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: mongo-express-betdata

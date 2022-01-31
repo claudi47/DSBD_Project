@@ -1,0 +1,54 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bot
+  labels:
+    app: bot
+  namespace: dsbd
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: bot
+      labels:
+        app: bot
+    spec:
+      containers:
+        - name: bot
+          image: lauralex/dsbd_bot
+          imagePullPolicy: Always
+          env:
+            - name: DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: connectionString.standardSrv
+                  name: mongo-user-admin-claudi47
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  key: database
+                  name: dsbd-config
+            - name: BROKER
+              valueFrom:
+                configMapKeyRef:
+                  key: broker
+                  name: dsbd-config
+            - name: SCHEMA_REGISTRY
+              valueFrom:
+                configMapKeyRef:
+                  key: schemaRegistry
+                  name: dsbd-config
+            - name: BOT_TOKEN_DSBD
+              valueFrom:
+                secretKeyRef:
+                  key: token
+                  name: discord
+            - name: USER_SERVICE_URL
+              value: user-service
+            - name: BETDATA_SERVICE_URL
+              value: bet-data-service
+
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: bot

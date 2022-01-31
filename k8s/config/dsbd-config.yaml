@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dsbd-config
+  namespace: dsbd
+data:
+  database: db_dsbd
+  broker: kafka.confluent.svc.cluster.local:9071
+  schemaRegistry: http://schemaregistry.confluent.svc.cluster.local:8081

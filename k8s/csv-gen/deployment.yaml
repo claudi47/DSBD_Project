@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: csv-gen
+  labels:
+    app: csv-gen
+  namespace: dsbd
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: csv-gen
+      labels:
+        app: csv-gen
+    spec:
+      containers:
+        - name: csv-gen
+          image: lauralex/dsbd_csv_gen
+          imagePullPolicy: Always
+          env:
+            - name: BROKER
+              valueFrom:
+                configMapKeyRef:
+                  key: broker
+                  name: dsbd-config
+            - name: SCHEMA_REGISTRY
+              valueFrom:
+                configMapKeyRef:
+                  key: schemaRegistry
+                  name: dsbd-config
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: csv-gen
