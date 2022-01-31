@@ -21,7 +21,8 @@ This is the "Superproject" repository containing all the submodules for the DSBD
   - [x] DSBD modules
 - [x] HTTP stats requests and processing
 - [x] Stats export from Kafka and HTTP endpoints to Prometheus
-- [ ] Performance predictions (time-series data forecasting, probably using Prophet by FB)
+- [x] Performance predictions (time-series data forecasting, probably using Prophet by FB)
   - [x] First analysis and draft implementation
-  - [ ] Tested implementation
-  - [ ] Release
+  - [x] Tested implementation
+  - [x] Release
+- [ ] Final adjustments
