@@ -93,6 +93,8 @@ services:
       - schema-registry
     build:
       context: ./DSBD_Bot
+    volumes:
+      - settings:/usr/src/app/config
 
   bet_data_service:
     image: lauralex/dsbd_betdata_service
@@ -187,3 +189,4 @@ services:
 volumes:
   database_betdata:
   database_user:
+  settings:
