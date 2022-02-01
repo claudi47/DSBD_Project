@@ -4,8 +4,8 @@ metadata:
   name: mongo-user
   namespace: dsbd
 spec:
-  members: 1
-  # arbiters: 1
+  members: 3
+  arbiters: 1
   type: ReplicaSet
   version: "5.0.5"
   security:

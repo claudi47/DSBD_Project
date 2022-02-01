@@ -6,7 +6,7 @@ metadata:
     app: user-service
   namespace: dsbd
 spec:
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       name: user-service

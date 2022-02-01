@@ -13,8 +13,15 @@ spec:
       labels:
         app: bot
     spec:
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: bot-config
       containers:
         - name: bot
+          volumeMounts:
+            - mountPath: /usr/src/app/config
+              name: config
           image: lauralex/dsbd_bot
           imagePullPolicy: Always
           env:
