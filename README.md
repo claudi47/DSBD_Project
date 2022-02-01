@@ -25,4 +25,4 @@ This is the "Superproject" repository containing all the submodules for the DSBD
   - [x] First analysis and draft implementation
   - [x] Tested implementation
   - [x] Release
-- [ ] Final adjustments
+- [x] Final adjustments
