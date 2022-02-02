@@ -1,0 +1,24 @@
+- Avvio con docker-compose:
+
+apire la cmd nella directory del progetto e digitare "docker compose up"
+
+
+
+- Avvio con Kubernetes:
+
+andare nella directory k8s e avviare il file "start_dsbd.bat"
+per terminare aprire "stop_dsbd_all.bat"
+
+
+
+- Per andare su Grafana:
+
+digitare "kubectl port-forward svc/my-kube-prometheus-grafana 9090:80 -n monitoring"
+
+
+
+
+per la parte di Prometheus:
+
+per il simulatore di richieste avviare "request_simulator.py" nella directoru "DSBD_Predictor"
+per il notebook jupyter di Prometheus aprire "predictor.ipynb"
